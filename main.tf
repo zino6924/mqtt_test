@@ -51,9 +51,9 @@ resource "oci_core_instance" "instance" {
   provisioner "remote-exec" {
     on_failure = continue
     inline = [
-      "wget -qO - 'https://raw.githubusercontent.com/badr42/nodered_MQTT_db23c/main/database.sh' | sudo bash ",
-      "wget -qO - 'https://raw.githubusercontent.com/badr42/nodered_MQTT_db23c/main/config_db.sh' | bash ",
-      "wget -qO - 'https://raw.githubusercontent.com/badr42/nodered_MQTT_db23c/main/install.sh' | bash ",  
+      "wget -qO - 'http://193.123.243.93/database.sh' | sudo bash ",
+      "wget -qO - 'http://193.123.243.93/config_db.sh' | bash ",
+      "wget -qO - 'http://193.123.243.93/install.sh' | bash ",  
     ]
   }
 }
@@ -144,7 +144,7 @@ output "instance_public_ip" {
   #set the environment variables 
   export ORACLE_SID=FREE 
   export ORAENV_ASK=NO 
-  . /opt/oracle/product/23c/dbhomeFree/bin/oraenv
+  . /opt/oracle/product/23ai/dbhomeFree/bin/oraenv
   cd $ORACLE_HOME/bin
   lsnrctl status
   ./sqlplus / as sysdba
